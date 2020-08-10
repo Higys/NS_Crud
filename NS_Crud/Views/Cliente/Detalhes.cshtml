@@ -1,0 +1,37 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+    <div class="text-center">
+        <div class="container">
+            <h2>Clientes Cadastrados</h2>
+            <hr />
+            <div class="container" style="display: flex; flex-direction:row; justify-content: center;">
+                <div>
+                    <ul>
+                        <li>ID: </li>
+                        <li>Nome: </li>
+                        <li>Sexo: </li>
+                        <li>Idade: </li>
+                        <li>CPF: </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul style="list-style-type: none;">
+                        <li>@Html.DisplayFor(model => model.Id) </li>
+                        <li>@Html.DisplayFor(model => model.Nome) </li>
+                        <li>@Html.DisplayFor(model => model.Sexo) </li>
+                        <li>@Html.DisplayFor(model => model.Idade) </li>
+                        <li>@Html.DisplayFor(model => model.Cpf) </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", "Cliente")'">Voltar</button>
+        </div>
+    </div>
+
+

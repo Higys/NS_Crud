@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Locacao>
+
+@{
+    ViewData["Title"] = "Locacao Page";
+}
+
+
+
+<div class="text-center">
+    <div class="container">
+        <h2>Locações Cadastradas</h2>
+
+        <button disabled type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Adicionar", "Locacao")'" style="margin-bottom: 10px; float: left;">Adicionar Locação</button>
+
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>ID Cliente</th>
+                    <th>Cliente</th>
+                    <th>Lista de Locações</th>
+                    <th>Valor Total Locação</th>
+                    <th>Valor Total Multa</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th>@Html.DisplayFor(modelItem => item.Id) </th>
+                    <th>@Html.DisplayFor(modelItem => item.IdCliente)</th>
+                    <th>
+                        @*<button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Detalhes", "Cliente", new { id = item.Cliente.Id })'">@Html.DisplayFor(modelItem => item.Cliente.Nome)</button>*@
+                        <button type="button" class="btn btn-info" onclick="window.open('@Url.Action("Detalhes", "Cliente", new { id = item.Cliente.Id })','_blank')">@Html.DisplayFor(modelItem => item.Cliente.Nome)</button>
+
+                    </th>
+
+                    <th>
+                        @foreach (var itemLista in item.ListaLocacao)
+                        {
+                            
+                          @(itemLista.Filme.Titulo) <br />
+                        }
+                    </th>
+                    
+                    <th>@Html.DisplayFor(modelItem => item.ValorTotalLocacao)</th>
+                    <th>@Html.DisplayFor(modelItem => item.ValorTotalMulta)</th>
+                    <th>
+                        
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    </th>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

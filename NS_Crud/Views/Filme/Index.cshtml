@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Filme>
+
+@{
+    ViewData["Title"] = "Filme Page";
+}
+
+
+
+<div class="text-center">
+    <div class="container">
+        <h2>Filmes Cadastrados</h2>
+
+        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Adicionar", "Filme")'" style="margin-bottom: 10px; float: left;">Adicionar Filme</button>
+
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>Titulo</th>
+                    <th>Genero</th>
+                    <th>Qtd_Copias</th>
+                    <th>Qtd_Disponiveis</th>
+                    <th>ValorLocacao</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@Html.DisplayFor(modelItem => item.Id) </th>
+                        <th>@Html.DisplayFor(modelItem => item.Titulo)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Genero)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Qtd_Disponiveis)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Qtd_Disponiveis)</th>
+                        <th>R$  @Html.DisplayFor(modelItem => item.ValorLocacao)</th>
+                        <th>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
+                            @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                        </th>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

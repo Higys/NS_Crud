@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Cliente>
+
+@{
+    ViewData["Title"] = "Cliente Page";
+
+}
+
+<div class="text-center">
+    <div class="container">
+        <h2>Clientes Cadastrados</h2>
+        
+        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Adicionar", "Cliente")'" style="margin-bottom: 10px; float: left;">Adicionar Cliente</button>
+            
+        
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Idade</th>
+                    <th>Cpf</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@Html.DisplayFor(modelItem => item.Id) </th>
+                        <th>@Html.DisplayFor(modelItem => item.Nome)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Sexo)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Idade)</th>
+                        <th>@Html.DisplayFor(modelItem => item.Cpf)</th>
+                        <th>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
+                            @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                        </th>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

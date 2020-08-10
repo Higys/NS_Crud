@@ -1,0 +1,54 @@
+﻿@model Locacao
+
+@{
+    ViewData["Title"] = "Deletar";
+}
+
+<div class="text-center">
+    <div class="container">
+        <h2>Deseja deletar esta Locacao?</h2>
+        <hr />
+        <div class="container" style="display: flex; flex-direction:row; justify-content: center;">
+            <div>
+                <ul>
+                    <li>ID </li>
+                    <li>ID Cliente</li>
+                    <li>Cliente</li>
+                    <li>Lista de Locações</li>
+                    <li>Valor Total Locação</li>
+                    <li>Valor Total Multa</li>
+                   
+                </ul>
+            </div>
+            <div>
+                <ul style="list-style-type: none;">
+                    <li>@Html.DisplayFor(model => model.Id) </li>
+                    <li>@Html.DisplayFor(model => model.IdCliente) </li>
+                    <li>@Html.DisplayFor(model => model.Cliente.Nome) </li>
+                    <li>
+                        @foreach (var itemLista in Model.ListaLocacao)
+                        {
+
+                            @(itemLista.Filme.Titulo) <br />
+                        }
+                    </li>
+                    <li>R$ @Html.DisplayFor(model => model.ValorTotalLocacao) </li>
+                    <li>R$ @Html.DisplayFor(model => model.ValorTotalMulta) </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+
+        <form asp-action="Delete" >
+                
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Deletar" class="btn btn-danger" />
+                <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", "Locacao")'">Voltar</button>
+            
+        </form>
+
+    </div>
+</div>
+

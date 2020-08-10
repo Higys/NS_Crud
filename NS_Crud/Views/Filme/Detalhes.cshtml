@@ -1,0 +1,39 @@
+﻿@model Filme
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+    <div class="text-center">
+        <div class="container">
+            <h2>Filmes Cadastrados</h2>
+            <hr />
+            <div class="container" style="display: flex; flex-direction:row; justify-content: center;">
+                <div>
+                    <ul style="text-align: left;">
+                        <li>ID </li>
+                        <li>Titulo</li>
+                        <li>Genero</li>
+                        <li>Quantidade de Cópias</li>
+                        <li>Quantidade Disponiveis</li>
+                        <li>Valor Locacao</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul style="list-style-type: none;">
+                        <li>@Html.DisplayFor(model => model.Id) </li>
+                        <li>@Html.DisplayFor(model => model.Titulo)</li>
+                        <li>@Html.DisplayFor(model => model.Genero)</li>
+                        <li>@Html.DisplayFor(model => model.Qtd_Disponiveis)</li>
+                        <li>@Html.DisplayFor(model => model.Qtd_Disponiveis)</li>
+                        <li>R$ @Html.DisplayFor(model => model.ValorLocacao)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", "Cliente")'">Voltar</button>
+        </div>
+    </div>
+
+
